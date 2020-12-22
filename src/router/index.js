@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import layout from '../layout/layout.vue'
 import helloWorld from '../components/HelloWorld.vue'
 import VuexTest from '../views/VuexTest.vue'
+import Demo1 from '../views/Demo1.vue'
 
 Vue.use(VueRouter)
 
@@ -41,7 +42,14 @@ const routes = [
         mete:{
           title:'计数器'
         }
-
+      },
+      {
+        path:'/Vuex/demo1',
+        name:'demo1',
+        component:Demo1,
+        mete:{
+          title:'demo1'
+        }
       }
     ]
   }

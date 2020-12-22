@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h3>当前count的值为：{{ count }}</h3>
+    <!-- <h3>当前count的值为：{{ count }}</h3> -->
+    <h3>{{showNum}}</h3>
     <el-button @click="btnHandler1">+1</el-button>
     <el-button @click="btnHandler2">+N</el-button>
     <el-button @click="btnHandler3">+N3</el-button>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations , mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {}
@@ -21,10 +22,11 @@ export default {
     //vuex第一种使用方式：this.$store.state.count
     //vuex的第二种使用方式
     ...mapState(['count']),
+    ...mapGetters(['showNum']),
   },
   methods: {
     ...mapMutations(['add', 'addN']),
-    ...mapActions(['addAsync','addNAsync']),
+    ...mapActions(['addAsync', 'addNAsync']),
     btnHandler1: function () {
       this.$store.commit('add')
     },
@@ -44,9 +46,9 @@ export default {
     btnHandler5: function () {
       this.$store.dispatch('addNAsync', 5)
     },
-    btnHandler6:function(){
+    btnHandler6: function () {
       this.addNAsync(7)
-    }
+    },
   },
 }
 </script>

@@ -17,21 +17,21 @@ export default {
   name: 'userInfo',
   data() {
     return {
-      userName: '',
+      userName: '张三',
     }
   },
   methods: {
-    getUserInfo: function () {
-      var _this = this
-      this.axios({
-        method: 'get',
-        url: '/apis/OAUserInfo/GetCurrentUserDossier',
-      })
-        .then((res) => {
-          this.userName = res.data.result.obj.userName
-        })
-        .catch((error) => {})
-    },
+    // getUserInfo: function () {
+    //   var _this = this
+    //   this.axios({
+    //     method: 'get',
+    //     url: '/apis/OAUserInfo/GetCurrentUserDossier',
+    //   })
+    //     .then((res) => {
+    //       this.userName = res.data.result.obj.userName
+    //     })
+    //     .catch((error) => {})
+    // },
     handleCommand(command) {
       var _this = this
       if (command == 'loginOut') {
@@ -43,12 +43,11 @@ export default {
     },
     increment() {
       this.$store.commit('increment')
-      console.log(this.$store.state.count)
     },
   },
-  mounted: function () {
-    this.getUserInfo()
-  },
+  // mounted: function () {
+  //   this.getUserInfo()
+  // },
 }
 </script>
 
