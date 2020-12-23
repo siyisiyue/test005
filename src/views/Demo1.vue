@@ -10,40 +10,53 @@
           ></el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加事项</el-button>
+          <el-button type="primary" @click="btnHandler">添加事项</el-button>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
           <el-card class="box-card2" :body-style="{ padding: '0px' }">
             <ul>
-              <li v-for="(item, i) in list">
+              <li v-for="(item, i) in getView">
                 <el-row>
                   <el-col :span="2">
-                    <el-checkbox v-model="item.done"></el-checkbox>
+                    <el-checkbox
+                      :value="item.done"
+                      @change="
+                        (x) => {
+                          checkboxHandler(x, item.id)
+                        }
+                      "
+                    ></el-checkbox>
                   </el-col>
                   <el-col :span="20">
                     {{ item.info }}
                   </el-col>
                   <el-col :span="2">
-                    <el-link type="primary" :underline="false"
+                    <el-link
+                      type="primary"
+                      :underline="false"
+                      @click="removeItemById(item.id)"
                       >删除</el-link
-                    ></el-col
-                  >
+                    >
+                  </el-col>
                 </el-row>
               </li>
               <li>
                 <el-row>
-                  <el-col :span="6">0条剩余</el-col>
+                  <el-col :span="6">{{ showDoneNum }}</el-col>
                   <el-col :span="12">
-                    <el-radio-group v-model="radio1">
-                      <el-radio-button label="全部"></el-radio-button>
-                      <el-radio-button label="未完成"></el-radio-button>
-                      <el-radio-button label="已完成"></el-radio-button>
-                    </el-radio-group>
+                    <el-button-group>
+                      <el-button :type="getPrimary('all')" @click="changeViewHandler('all')">全部</el-button>
+                      <el-button :type="getPrimary('undone')" @click="changeViewHandler('undone')">未完成</el-button>
+                      <el-button :type="getPrimary('done')" @click="changeViewHandler('done')">已完成</el-button>
+                    </el-button-group>
                   </el-col>
                   <el-col :span="6" style="text-align: right">
-                    <el-link type="primary" :underline="false"
+                    <el-link
+                      type="primary"
+                      :underline="false"
+                      @click="cleardoneHandler"
                       >清除已完成</el-link
                     >
                   </el-col>
@@ -58,24 +71,59 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      radio1: '全部',
+    
     }
   },
   created() {
     this.$store.dispatch('getList')
   },
   computed: {
-    ...mapState(['list', 'inputValue']),
+    ...mapGetters(['showDoneNum','getPrimary','getView']),
+    ...mapState(['inputValue', 'viewKey']),
   },
   methods: {
-    ...mapMutations(['setInputValue']),
+    ...mapMutations([
+      'setInputValue',
+      'addList',
+      'removeListById',
+      'changeStatus',
+      'clearDone',
+      'changeView'
+    ]),
     inputHandler(v) {
       this.setInputValue(v)
     },
+    btnHandler() {
+      if (this.inputValue.trim().length == 0) {
+        this.$message({
+          message: '文本不能为空',
+          type: 'warning',
+        })
+        return
+      }
+      this.addList()
+    },
+    removeItemById(id) {
+      //this.$store.commit("removeListById",id)
+      this.removeListById(id)
+    },
+    checkboxHandler(v, id) {
+      const param = {
+        id: id,
+        done: v,
+      }
+      this.changeStatus(param)
+    },
+    cleardoneHandler() {
+      this.clearDone()
+    },
+    changeViewHandler(v) {
+      this.changeView(v)
+    }
   },
 }
 </script>
