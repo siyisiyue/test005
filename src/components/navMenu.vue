@@ -1,9 +1,9 @@
 <template>
   <div class="divMenu">
     <el-menu
-      :default-active = "$route.path"
+      :default-active="$route.path"
       unique-opened
-      router 
+      router
       class="el-menu-vertical-demo el-menu"
       @open="handleOpen"
       @close="handleClose"
@@ -19,38 +19,38 @@
         </template>
         <el-menu-item index="/vuex/jishuqi">计数器修改2</el-menu-item>
         <el-menu-item index="/vuex/demo1">demo1</el-menu-item>
-        <el-submenu index="2-2">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-2-1">选项1</el-menu-item>
-        </el-submenu>
       </el-submenu>
-
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">合同</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">质量</span>
-      </el-menu-item>
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-s-tools"></i>
+          <span>Vue</span>
+        </template>
+        <el-menu-item index="/Vue/ChaZhi">插值操作</el-menu-item>
+        <el-menu-item index="/Vue/Vbind">Vbind操作</el-menu-item>
+        <el-menu-item index="/Vue/Computed">Computed计算属性</el-menu-item>
+      </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-s-tools"></i>
+          <span>JS</span>
+        </template>
+        <el-menu-item index="/JS/ES6">ES6 语法</el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return {
-    
-    }
+  data() {
+    return {}
   },
   methods: {
-    handleOpen(key, keyPath) {
-    },
+    handleOpen(key, keyPath) {},
     handleClose(key, keyPath) {
       //console.log(key, keyPath)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -62,5 +62,9 @@ export default {
   height: calc(100% - 50px);
   overflow-y: auto;
 }
-.el-menu-item a{display: inline-block;width: 100%;height: 100%; }
+.el-menu-item a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
 </style>

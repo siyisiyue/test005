@@ -21,17 +21,17 @@ export default {
     }
   },
   methods: {
-    // getUserInfo: function () {
-    //   var _this = this
-    //   this.axios({
-    //     method: 'get',
-    //     url: '/apis/OAUserInfo/GetCurrentUserDossier',
-    //   })
-    //     .then((res) => {
-    //       this.userName = res.data.result.obj.userName
-    //     })
-    //     .catch((error) => {})
-    // },
+    getUserInfo: function () {
+      var _this = this
+      this.axios({
+        method: 'get',
+        url: '/apis/OAUserInfo/GetCurrentUserDossier',
+      })
+        .then((res) => {
+          this.userName = res.data.result.obj.userName
+        })
+        .catch((error) => {})
+    },
     handleCommand(command) {
       var _this = this
       if (command == 'loginOut') {
@@ -45,9 +45,9 @@ export default {
       this.$store.commit('increment')
     },
   },
-  // mounted: function () {
-  //   this.getUserInfo()
-  // },
+  mounted: function () {
+    this.getUserInfo()
+  },
 }
 </script>
 

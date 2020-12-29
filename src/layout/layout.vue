@@ -68,6 +68,9 @@ export default {
   overflow: hidden;
   padding: 0;
 }
+.el-container{
+  height: 100%;
+}
 .divHeader {
   height: 50px;
   width: 100%;
@@ -87,6 +90,9 @@ export default {
 }
 .divMain {
   background: #ecf0f5;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
 }
 .el-header {
   padding: 0;
@@ -153,5 +159,10 @@ export default {
   position: absolute;
   top: 0;
   right: 20px;
+}
+.content {
+  padding: 10px;
+  text-align: left;
+  background: #fff;
 }
 </style>

@@ -5,6 +5,10 @@ import layout from '../layout/layout.vue'
 import helloWorld from '../components/HelloWorld.vue'
 import VuexTest from '../views/VuexTest.vue'
 import Demo1 from '../views/Demo1.vue'
+import ChaZhi from '../views/Vue/ChaZhi.vue'
+import Vbind from '../views/Vue/Vbind.vue'
+import Computed from '../views/Vue/Computed.vue'
+import Es6 from '../views/JS/ES6.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +55,39 @@ const routes = [
           title:'demo1'
         }
       }
+    ]
+  },
+  {
+    path:'/Vue',
+    component:layout,
+    children:[
+      {
+        path:'/Vue/ChaZhi',
+        name:'chazhi',
+        component:ChaZhi
+      },
+      {
+        path:'/Vue/Vbind',
+        name:'Vbind',
+        component:Vbind
+      },
+      {
+        path:'/Vue/Computed',
+        name:'Computed',
+        component:Computed
+      }
+
+    ]
+  },
+  {
+    path:'Js',
+    component:layout,
+    children:[
+      {
+        path:'/Js/Es6',
+        name:'Es6',
+        component:Es6
+      },
     ]
   }
 ]
