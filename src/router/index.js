@@ -9,6 +9,10 @@ import ChaZhi from '../views/Vue/ChaZhi.vue'
 import Vbind from '../views/Vue/Vbind.vue'
 import Computed from '../views/Vue/Computed.vue'
 import Es6 from '../views/JS/ES6.vue'
+import Von from '../views/Vue/Von.vue'
+import Vif from '../views/Vue/Vif.vue'
+import Vfor from '../views/Vue/Vfor.vue'
+import CaseShopingCar from '../views/Vue/CaseShopingCar.vue'
 
 Vue.use(VueRouter)
 
@@ -75,8 +79,27 @@ const routes = [
         path:'/Vue/Computed',
         name:'Computed',
         component:Computed
+      },
+      {
+        path:'/Vue/Von',
+        name:'Von',
+        component:Von
+      },
+      {
+        path:'/Vue/Vif',
+        name:'Vif',
+        component:Vif
+      },
+      {
+        path:'/Vue/Vfor',
+        name:'Vfor',
+        component:Vfor
+      },
+      {
+        path:'/Vue/CaseShopingCar',
+        name:'CaseShopingCar',
+        component:CaseShopingCar
       }
-
     ]
   },
   {

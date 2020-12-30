@@ -17,6 +17,11 @@
       </li>
     </ul>
 
+    <p>第二种</p>
+    <ul>
+      <li v-for="(item,index) in movies" :class="{isActive:currentIndex===index}" @click="ChangeActive(index)">{{item.name}}</li>
+    </ul>
+
     <p>5.v-bind 动态绑定style</p>
     <p>可以用驼峰，也可以用原属性</p>
     <h3 :style="{'font-size':finalSize,backgroundColor:bgColor}">阿双方均爱疯</h3>
@@ -39,7 +44,8 @@ export default {
         { name: '美国队长', active: false },
       ],
       finalSize:'24px',
-      bgColor:'red'
+      bgColor:'red',
+      currentIndex:0
     }
   },
   methods: {
@@ -57,6 +63,9 @@ export default {
             }
         });
         this.movies[index].active=true
+    },
+    ChangeActive(index){
+      this.currentIndex=index
     }
   }
 }
