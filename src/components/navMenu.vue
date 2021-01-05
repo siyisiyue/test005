@@ -32,6 +32,8 @@
         <el-menu-item index="/Vue/Vif">v-if操作</el-menu-item>
         <el-menu-item index="/Vue/Vfor">v-for操作及数组响应式方法</el-menu-item>
         <el-menu-item index="/Vue/CaseShopingCar">购物车案例</el-menu-item>
+        <el-menu-item index="/Vue/VModel">v-model操作</el-menu-item>
+        <el-menu-item index="/Vue/Prop">父子组件传值</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">

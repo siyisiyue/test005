@@ -13,7 +13,11 @@
         <el-table-column type="index" width="50"></el-table-column>
         <el-table-column prop="name" label="书名"> </el-table-column>
         <el-table-column prop="date" label="时间"> </el-table-column>
-        <el-table-column prop="price" label="价格"> </el-table-column>
+        <el-table-column prop="price" label="价格">
+          <template slot-scope="scope">
+            <span>{{ scope.row.price.toFixed(2) }}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="number" label="数量">
           <template slot-scope="scope">
             <el-button
@@ -41,6 +45,13 @@
       </el-table>
     </template>
     <h3 v-else>购物车为空</h3>
+
+    <p>1.过滤器</p>
+    <p>{{ totalPrice | ShowPrice }}</p>
+    <p>2.数组高阶函数 filter,map,reduce</p>
+    <el-button type="primary" @click="btnhandler1">filter</el-button>
+    <el-button type="primary" @click="btnhandler2">map</el-button>
+    <el-button type="primary" @click="btnhandler3">reduce</el-button>
   </div>
 </template>
 
@@ -73,6 +84,8 @@ export default {
           number: 1,
         },
       ],
+      totalPrice: 478,
+      nums: [23, 53, 111, 25, 74, 435, 63, 52, 315, 45],
     }
   },
   methods: {
@@ -81,11 +94,12 @@ export default {
       this.tableData.splice(index, 1)
     },
     getSummaries() {
-      let price = 0
-      this.tableData.forEach((item) => {
-        price += item.price * item.number
-      })
-      const sums = ['总价', '￥' + price]
+      // let price = 0
+      // this.tableData.forEach((item) => {
+      //   price += item.price * item.number
+      // })
+      let price1 = this.tableData.reduce((pre, cur) => pre + cur.price * cur.number,0)
+      const sums = ['总价', '￥' + price1.toFixed(2)]
       return sums
     },
     handleClickSub(row) {
@@ -102,8 +116,25 @@ export default {
       row.number++
       this.tableData.splice(index, 1, row)
     },
+    btnhandler1() {
+      let newNumber = this.nums.filter((x) => x < 100)
+      console.log(newNumber)
+    },
+    btnhandler2() {
+      let newNumber = this.nums.map((x) => x * 2)
+      console.log(newNumber)
+    },
+    btnhandler3() {
+      let newNumber = this.nums.reduce((prev, curent) => prev + curent) 
+      console.log(newNumber)
+    },
   },
   computed: {},
+  filters: {
+    ShowPrice(price) {
+      return '￥' + price.toFixed(2)
+    },
+  },
 }
 </script>
 

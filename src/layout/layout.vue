@@ -22,7 +22,7 @@
             </li>
           </ul>
           <div class="divTitle">
-            重庆绕城高速春华立交工程管理平台
+            VUE.JS
           </div>
           <userInfo class="Uinfo" />
         </div>
@@ -86,7 +86,7 @@ export default {
   height: 50px;
   overflow: hidden;
   background: url(../assets/logo.png) no-repeat center center #929dae;
-  background-size: 60%;
+  background-size: auto 80%;
 }
 .divMain {
   background: #ecf0f5;
@@ -165,4 +165,6 @@ export default {
   text-align: left;
   background: #fff;
 }
+.content >>> .title{text-align: center;}
+.content >>> .boder{border: 1px solid #999;padding: 10px;}
 </style>

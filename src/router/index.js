@@ -13,6 +13,8 @@ import Von from '../views/Vue/Von.vue'
 import Vif from '../views/Vue/Vif.vue'
 import Vfor from '../views/Vue/Vfor.vue'
 import CaseShopingCar from '../views/Vue/CaseShopingCar.vue'
+import VModel from '../views/Vue/VModel.vue'
+import Prop from '../views/Vue/Prop.vue'
 
 Vue.use(VueRouter)
 
@@ -99,11 +101,22 @@ const routes = [
         path:'/Vue/CaseShopingCar',
         name:'CaseShopingCar',
         component:CaseShopingCar
+      },
+      {
+        path:'/Vue/VModel',
+        name:'VModel',
+        component:VModel
+      }
+      ,
+      {
+        path:'/Vue/Prop',
+        name:'Prop',
+        component:Prop
       }
     ]
   },
   {
-    path:'Js',
+    path:'/Js',
     component:layout,
     children:[
       {
