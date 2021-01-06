@@ -45,9 +45,16 @@ export default {
       pnumber2: 10,
     }
   },
+  name:'prop',
   components: {
     'my-child': child,
     childtwo,
+  },
+   created() {
+    console.log('Prop组件被创建')
+  },
+  destroyed() {
+    console.log('Prop组件被销毁')
   },
   methods: {
     clickHander(item) {

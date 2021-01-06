@@ -12,7 +12,7 @@
         <i class="el-icon-s-home"></i>
         <span slot="title">主页</span>
       </el-menu-item>
-      <el-submenu index="2">
+      <el-submenu index="/vuex">
         <template slot="title">
           <i class="el-icon-s-tools"></i>
           <span>Vuex</span>
@@ -20,7 +20,7 @@
         <el-menu-item index="/vuex/jishuqi">计数器修改2</el-menu-item>
         <el-menu-item index="/vuex/demo1">demo1</el-menu-item>
       </el-submenu>
-      <el-submenu index="3">
+      <el-submenu index="/Vue">
         <template slot="title">
           <i class="el-icon-s-tools"></i>
           <span>Vue</span>
@@ -34,8 +34,17 @@
         <el-menu-item index="/Vue/CaseShopingCar">购物车案例</el-menu-item>
         <el-menu-item index="/Vue/VModel">v-model操作</el-menu-item>
         <el-menu-item index="/Vue/Prop">父子组件传值</el-menu-item>
+        <el-menu-item index="/Vue/Slot">Slot 插槽</el-menu-item>
+        <el-menu-item index="/Vue/Router/10001" :route="url">Vue Router</el-menu-item>
       </el-submenu>
-      <el-submenu index="4">
+      <!-- <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-s-tools"></i>
+          <span>VueCli</span>
+        </template>
+        <el-menu-item index="/VueCli/VueCliConfig">VueCli 配置</el-menu-item>
+      </el-submenu> -->
+      <el-submenu index="/JS">
         <template slot="title">
           <i class="el-icon-s-tools"></i>
           <span>JS</span>
@@ -49,7 +58,9 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      url:{path:'/Vue/Router/10001',query:{name:'zhangsan',age:18,length:20}}
+    }
   },
   methods: {
     handleOpen(key, keyPath) {},

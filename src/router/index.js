@@ -14,7 +14,15 @@ import Vif from '../views/Vue/Vif.vue'
 import Vfor from '../views/Vue/Vfor.vue'
 import CaseShopingCar from '../views/Vue/CaseShopingCar.vue'
 import VModel from '../views/Vue/VModel.vue'
-import Prop from '../views/Vue/Prop.vue'
+// import Prop from '../views/Vue/Prop.vue'
+// import Slot from '../views/Vue/Slot.vue'
+// import Router from '../views/Vue/VueRouter.vue'
+
+
+//路由懒加载,
+const Prop =()=>import('../views/Vue/Prop.vue')
+const Slot =()=>import('../views/Vue/Slot.vue')
+const Router =()=>import('../views/Vue/VueRouter.vue')
 
 Vue.use(VueRouter)
 
@@ -29,10 +37,18 @@ const routes = [
   },
   {
     path:'/',
+    redirect:'/helloworld'//重定向
+  },
+  {
+    path:'/Vuex',
+    redirect:'/Vuex/jishuqi'//重定向
+  },
+  {
+    path:'/',
     component:layout,
     children:[
       {
-        path:'/',
+        path:'/helloworld',
         name:'helloworld',
         component:helloWorld,
         meta:{
@@ -68,51 +84,68 @@ const routes = [
     component:layout,
     children:[
       {
-        path:'/Vue/ChaZhi',
+        path:'ChaZhi',
         name:'chazhi',
         component:ChaZhi
       },
       {
-        path:'/Vue/Vbind',
+        path:'Vbind',
         name:'Vbind',
         component:Vbind
       },
       {
-        path:'/Vue/Computed',
+        path:'Computed',
         name:'Computed',
         component:Computed
       },
       {
-        path:'/Vue/Von',
+        path:'Von',
         name:'Von',
         component:Von
       },
       {
-        path:'/Vue/Vif',
+        path:'Vif',
         name:'Vif',
         component:Vif
       },
       {
-        path:'/Vue/Vfor',
+        path:'Vfor',
         name:'Vfor',
         component:Vfor
       },
       {
-        path:'/Vue/CaseShopingCar',
+        path:'CaseShopingCar',
         name:'CaseShopingCar',
         component:CaseShopingCar
       },
       {
-        path:'/Vue/VModel',
+        path:'VModel',
         name:'VModel',
         component:VModel
       }
       ,
       {
-        path:'/Vue/Prop',
+        path:'Prop',
         name:'Prop',
         component:Prop
       }
+      ,
+      {
+        path:'Slot',
+        name:'Slot',
+        component:Slot
+      },
+      {
+        path:'Router/:uid',//动态路由
+        component:Router,
+        meta:{
+          title:'路由'
+        },
+        beforeEnter(to ,from ,next){
+          console.log("我进来啦")
+          next()
+        }
+      },
     ]
   },
   {
@@ -132,13 +165,18 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+
   routes
 })
+
 
 // 导航守卫
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
 
 router.beforeEach((to, from, next) => {
+  if(to.meta.title){
+    document.title=to.meta.title;
+  }
   if (to.path === '/login') {
     next();
   } else {
