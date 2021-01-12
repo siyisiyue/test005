@@ -7,11 +7,15 @@
     <p>ES6中,加入了let, let它是有if和for的块级作用域.</p>
 
     <p>const常量不能被重新赋值，但是可以改它里面的属性</p>
-     <img alt="Vue logo" src="../../assets/img1.png">
+    <img alt="Vue logo" src="../../assets/img1.png" />
 
-     <h3>对象字面量增强写法</h3>
-     <img src="../../assets/img2.png" alt="">
-      <img src="../../assets/img3.png" alt="">
+    <h3>对象字面量增强写法</h3>
+    <img src="@/assets/img2.png" alt="" />
+    <img src="@/assets/img3.png" alt="" />
+    <br />
+    <h3>Promise</h3>
+    <img src="@/assets/img4.png" alt="" />
+     <img src="@/assets/img5.png" alt="" />
   </div>
 </template>
 

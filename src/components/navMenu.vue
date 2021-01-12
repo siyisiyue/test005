@@ -36,6 +36,7 @@
         <el-menu-item index="/Vue/Prop">父子组件传值</el-menu-item>
         <el-menu-item index="/Vue/Slot">Slot 插槽</el-menu-item>
         <el-menu-item index="/Vue/Router/10001" :route="url">Vue Router</el-menu-item>
+        <el-menu-item index="/Vue/axios">Axios</el-menu-item>
       </el-submenu>
       <!-- <el-submenu index="4">
         <template slot="title">

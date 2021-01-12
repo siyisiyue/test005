@@ -9,11 +9,14 @@
     <el-button @click="btnHandler4">+1 async</el-button>
     <el-button @click="btnHandler5">+N async(带参数)</el-button>
     <el-button @click="btnHandler6">+N async(带参数)第二种方式</el-button>
+
+      <el-button @click="btnHandlerConst">常量方式</el-button>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import {INCREMENT} from '@/store/mutations.types.js'
 export default {
   data() {
     return {}
@@ -49,6 +52,9 @@ export default {
     btnHandler6: function () {
       this.addNAsync(7)
     },
+    btnHandlerConst() {
+      this.$store.commit(INCREMENT)
+    }
   },
 }
 </script>

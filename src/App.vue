@@ -7,11 +7,12 @@
 <script>
 
 export default {
-  name: 'app'
+  name: 'app',
 }
 </script>
 
 <style>
+@import 'assets/css/base.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,13 +24,4 @@ export default {
   position: relative;
   overflow: hidden;
 }
-html,
-body {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-}
-a{text-decoration: none;}
 </style>

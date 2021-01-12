@@ -16,6 +16,7 @@ let config = {
 
 const _axios = axios.create(config);
 
+//拦截器
 _axios.interceptors.request.use(
   function(config) {
     if (localStorage.getItem('Authorization')) {

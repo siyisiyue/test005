@@ -67,6 +67,10 @@
         </el-col>
       </el-row>
     </el-card>
+    <el-row>
+      <p>{{$store.state.info}}</p>
+      <p><el-button @click="btnHandler2">点击</el-button></p>
+    </el-row>
   </div>
 </template>
 
@@ -123,6 +127,9 @@ export default {
     },
     changeViewHandler(v) {
       this.changeView(v)
+    },
+    btnHandler2(){
+      this.$store.commit('changeInfo')
     }
   },
 }
