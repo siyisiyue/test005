@@ -2,6 +2,7 @@
 
 import Vue from 'vue';
 import axios from "axios";
+import router from '@/router'
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -9,7 +10,7 @@ import axios from "axios";
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
-   baseURL: "http://localhost:34611"
+   baseURL: "https://localhost:44333"
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
@@ -34,12 +35,16 @@ _axios.interceptors.request.use(
 // Add a response interceptor
 _axios.interceptors.response.use(
   function(response) {
-    console.log(response.status);
     // Do something with response data
     return response;
   },
   function(error) {
+    console.log('response_',error.response)
     // Do something with response error
+    if(error.response.status==401){
+      localStorage.removeItem('Authorization')
+      router.push({path:"/login"})
+    }
     return Promise.reject(error);
   }
 );

@@ -27,7 +27,7 @@ export default {
     },
     computed: {
         isActive() {
-          console.log(this.$route.path)
+          //console.log(this.$route.path)
            return this.$route.path.indexOf(this.path) !=-1
         },
         color() {

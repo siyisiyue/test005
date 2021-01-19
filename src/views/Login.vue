@@ -9,11 +9,11 @@
       class="login-box"
     >
       <h3 class="login-title">欢迎登录</h3>
-      <el-form-item label="账号" prop="userNameOrEmailAddress">
+      <el-form-item label="账号" prop="username">
         <el-input
           type="text"
           placeholder="请输入账号"
-          v-model="form.userNameOrEmailAddress"
+          v-model="form.username"
         />
       </el-form-item>
       <el-form-item label="密码" prop="password">
@@ -51,13 +51,13 @@ export default {
     };
     return {
       form: {
-        userNameOrEmailAddress: "",
+        username: "",
         password: "",
       },
 
       // 表单验证，需要在 el-form-item 元素中增加 prop 属性
       rules: {
-        userNameOrEmailAddress: [
+        username: [
           { required: true, message: "用户名不能为空", trigger: "blur" },
         ],
         password: [
@@ -78,19 +78,18 @@ export default {
         if (valid) {
           this.axios({
             method: "post",
-            url: "/apis/OAUserInfo/Authenticate",
+            url: "/api/Authentication/requestToken",
             data: _this.form,
           })
             .then((res) => {
-              //console.log(res.data);
-              _this.userToken = "Bearer " + res.data.result.obj.accessToken;
+              let userToken = "Bearer " + res.data
               // 将用户token保存到vuex中
-              _this.changeLogin({ Authorization: _this.userToken });
-              _this.$router.push("/");
+              _this.changeLogin({ Authorization: userToken });
+              _this.$router.push("/mobile");
             })
             .catch((error) => {
               this.$message({message:"账号或密码错误",type:"error"});
-              //console.log(error);
+             
             });
 
           // 使用 vue-router 路由到指定页面，该方式称之为编程式导航

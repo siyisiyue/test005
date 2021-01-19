@@ -17,7 +17,7 @@ export default {
   name: 'userInfo',
   data() {
     return {
-      userName: '张三',
+      userName: '',
     }
   },
   methods: {
@@ -25,10 +25,10 @@ export default {
       var _this = this
       this.axios({
         method: 'get',
-        url: '/apis/OAUserInfo/GetCurrentUserDossier',
+        url: '/api/User/GetUserInfo',
       })
         .then((res) => {
-          this.userName = res.data.result.obj.userName
+          this.userName = res.data.userName
         })
         .catch((error) => {})
     },

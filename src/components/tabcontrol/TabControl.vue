@@ -23,6 +23,7 @@ export default {
   methods: {
     controlHandler(index) {
       this.currentIndex = index
+      this.$emit('tabcontrol', index)
     },
   },
   props: {
@@ -41,6 +42,9 @@ export default {
   line-height: 40px;
   text-align: center;
   font-size: 14px;
+  z-index: 99;
+  background: #fff;
+  width: 100%;
 }
 .tab-control-item {
   flex: 1;

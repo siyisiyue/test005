@@ -1,6 +1,9 @@
 <template>
   <div class="mobile-view">
-      <router-view></router-view>
+    <keep-alive>
+       <router-view></router-view>
+    </keep-alive>
+     
     <tab-bar>
       <tab-bar-item path='/mobile/home' activeColor='#f00' >
         <img
@@ -53,12 +56,6 @@ import tabBarItem from '@/components/tabbar/TabBarItem.vue'
 export default {
   data() {
     return {
-      menuList: [
-        { name: '首页', img: '../../assets/img/tabbar/home.svg' },
-        { name: '分类', img: '../../assets/img/tabbar/list.svg' },
-        { name: '购物车', img: '../../assets/img/tabbar/car.svg' },
-        { name: '我的', img: '../../assets/img/tabbar/my.svg' },
-      ],
     }
   },
   components: {
@@ -73,6 +70,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: hidden;
   overflow-y: auto;
 }
 </style>

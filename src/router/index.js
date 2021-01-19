@@ -23,6 +23,7 @@ import Cart from '../views/Mobile/Cart/ShoppingCart.vue'
 import Category from 'views/Mobile/category/Category.vue'
 import Profile from 'views/Mobile/profile/Profile.vue'
 import PageAxios from '../views/Vue/PageAxios.vue'
+import BetterScrollPage from 'views/plugin/BetterScroll.vue'
 
 
 //路由懒加载,
@@ -166,6 +167,17 @@ const routes = [
         path: '/Js/Es6',
         name: 'Es6',
         component: Es6
+      },
+    ]
+  },
+  {
+    path: '/Plugins',
+    component: layout,
+    children: [
+      {
+        path: '/Plugins/BetterScroll',
+        name: 'BetterScroll',
+        component: BetterScrollPage
       },
     ]
   },

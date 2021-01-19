@@ -52,6 +52,13 @@
         </template>
         <el-menu-item index="/JS/ES6">ES6 语法</el-menu-item>
       </el-submenu>
+        <el-submenu index="/plugins">
+        <template slot="title">
+          <i class="el-icon-s-tools"></i>
+          <span>插件</span>
+        </template>
+        <el-menu-item index="/plugins/BetterScroll">Better-Scroll</el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>

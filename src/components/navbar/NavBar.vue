@@ -22,7 +22,7 @@ export default {
         display: flex;
         height: 44px;
         line-height: 44px;
-        position: fixed;
+        position: relative;
         top: 0;
         left: 0;
         z-index: 9;
