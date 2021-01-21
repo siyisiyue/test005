@@ -25,7 +25,7 @@ export default {
 .divEnd {
   text-align: center;
   font-size: 24px;
-  color: #615d5d;
+  color: #a7a4a4;
   line-height: 30px;
 }
 .divEnd span{

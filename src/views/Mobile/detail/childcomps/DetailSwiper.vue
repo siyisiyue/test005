@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <swiper ref="mySwiper" :options="swiperOptions">
+  <div class="detail-swiper">
+    <swiper ref="mySwiper2" :options="swiperOptions">
       <swiper-slide v-for="(item, index) in banner"
-        ><a :href="item.link" target="_blank"
-          ><img :src="item.image" @load="imageLoad" /></a
+        ><a 
+          ><img :src="item" @load="imageLoad" /></a
       ></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     swiper() {
-      return this.$refs.mySwiper.$swiper
+      return this.$refs.mySwiper2.$swiper
     },
   },
 }
@@ -55,4 +55,10 @@ export default {
 img {
   width: 100%;
 }
+.swiper-container {
+  height: 374px;
+  position: relative;
+  overflow: hidden;
+}
+
 </style>

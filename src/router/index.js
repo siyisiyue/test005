@@ -24,6 +24,7 @@ import Category from 'views/Mobile/category/Category.vue'
 import Profile from 'views/Mobile/profile/Profile.vue'
 import PageAxios from '../views/Vue/PageAxios.vue'
 import BetterScrollPage from 'views/plugin/BetterScroll.vue'
+import Detail from 'views/Mobile/detail/Detail.vue'
 
 
 //路由懒加载,
@@ -207,6 +208,11 @@ const routes = [
       {
         path: 'category',
         component: Category,
+      }
+      ,
+      {
+        path: 'detail/:id',
+        component: Detail,
       }
     ]
   },
