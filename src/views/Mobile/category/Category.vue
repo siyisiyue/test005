@@ -1,6 +1,14 @@
 <template>
   <div>
-      <h2>分类</h2>
+    <h2>分类</h2>
+    <scroll
+      class="wrapper-content"
+      ref="scroll"
+      @showbacktop="ShowBackTop"
+      :probe-type="3"
+      :pull-up-load="true"
+      @pullingup="LoadMore"
+    >
       <ul>
         <li>分类列表1</li>
         <li>分类列表2</li>
@@ -103,15 +111,44 @@
         <li>分类列表99</li>
         <li>分类列表100</li>
       </ul>
+    </scroll>
+    <back-top @click.native="backTopHandler" v-if="pd"></back-top>
   </div>
 </template>
 
-<script>
-export default {
 
+<script>
+import { backTopMixin } from '@/common/mixin.js'
+import Scroll from 'components/scroll/Scroll.vue'
+
+export default {
+  name:'category',
+  mixins: [backTopMixin],
+  data() {
+    return {}
+  },
+  components: {
+    Scroll,
+  },
+  methods: {
+    ShowBackTop(postion) {
+      this.pd = postion.y < -1000
+    },
+    LoadMore() {},
+  },
 }
 </script>
 
-<style>
-
+<style scoped>
+ul li{
+  height: 50px;
+}
+.wrapper-content {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  bottom: 49px;
+  overflow: hidden;
+}
 </style>

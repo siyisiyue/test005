@@ -38,7 +38,6 @@ import NavBar from 'components/navbar/NavBar.vue'
 import TabControl from 'components/tabcontrol/TabControl.vue'
 import GoodsList from 'components/goods/GoodsList.vue'
 import Scroll from 'components/scroll/Scroll.vue'
-import BackTop from 'components/backtop/BackTop.vue'
 import TheEnd from 'components/theend/TheEnd.vue'
 
 import HomeSwiper from './childcomps/HomeSwiper.vue'
@@ -46,8 +45,10 @@ import HomeRecommend from './childcomps/HomeRecommend.vue'
 import FeatureView from './childcomps/FeatureView.vue'
 
 import { debounce } from '@/common/utils.js'
+import { backTopMixin } from '@/common/mixin.js'
 
 export default {
+  mixins: [backTopMixin],
   data() {
     return {
       banner: null,
@@ -59,7 +60,6 @@ export default {
         sift: { page: 0, list: [], isEnd: false, y: 0 },
       },
       currentType: 'news',
-      pd: false,
       IsFixed: false,
       controlBarTop: 0,
       controlBarCurrentIndex: 0,
@@ -71,7 +71,6 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
-    BackTop,
     TheEnd,
 
     HomeSwiper,
@@ -129,10 +128,6 @@ export default {
       let y = this.goods[this.currentType].y
       this.$refs.scroll.refresh()
       this.$refs.scroll.scrollTo(0, y == 0 ? -this.controlBarTop : y, 0)
-     
-    },
-    backTopHandler() {
-      this.$refs.scroll.scrollTo(0, 0)
     },
     ShowBackTop(postion) {
       this.pd = postion.y < -1000
