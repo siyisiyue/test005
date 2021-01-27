@@ -12,6 +12,9 @@ export const backTopMixin = {
     methods: {
         backTopHandler() {
             this.$refs.scroll.scrollTo(0, 0)
+        },
+        listhenShowBackTop(postion) {
+            this.pd = postion.y < -1000
         }
     }
 

@@ -25,5 +25,4 @@ export default {
   background: #fff;
   z-index: 9;
 }
-
 </style>

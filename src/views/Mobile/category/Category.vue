@@ -122,7 +122,7 @@ import { backTopMixin } from '@/common/mixin.js'
 import Scroll from 'components/scroll/Scroll.vue'
 
 export default {
-  name:'category',
+  name: 'category',
   mixins: [backTopMixin],
   data() {
     return {}
@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     ShowBackTop(postion) {
-      this.pd = postion.y < -1000
+      this.listhenShowBackTop(postion)
     },
     LoadMore() {},
   },
@@ -140,7 +140,7 @@ export default {
 </script>
 
 <style scoped>
-ul li{
+ul li {
   height: 50px;
 }
 .wrapper-content {

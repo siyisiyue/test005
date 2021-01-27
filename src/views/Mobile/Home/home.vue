@@ -130,7 +130,7 @@ export default {
       this.$refs.scroll.scrollTo(0, y == 0 ? -this.controlBarTop : y, 0)
     },
     ShowBackTop(postion) {
-      this.pd = postion.y < -1000
+      this.listhenShowBackTop(postion)
       this.IsFixed = -postion.y > this.controlBarTop
       this.goods[this.currentType].y = postion.y
     },
@@ -175,6 +175,11 @@ export default {
 </script>
 
 <style scoped>
+#home{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 #home .nav-bar {
   background: #ff8198;
   color: #fff;
