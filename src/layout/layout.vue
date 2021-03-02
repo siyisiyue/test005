@@ -30,7 +30,7 @@
           <div class="container">
             <!--<keep-alive exclude="prop,spreadBind"> 不销毁 一般为了保持状态 exclude排除name=组件的name,多个逗号分隔-->
                <router-view />
-           <!-- </keep-alive>-->
+           <!-- </keep-alive>--> 
           </div>
         </div>
       </el-main>
