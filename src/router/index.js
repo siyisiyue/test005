@@ -25,6 +25,11 @@ import Profile from 'views/Mobile/profile/Profile.vue'
 import PageAxios from '../views/Vue/PageAxios.vue'
 import BetterScrollPage from 'views/plugin/BetterScroll.vue'
 import Detail from 'views/Mobile/detail/Detail.vue'
+import Gantt from 'views/plugin/Gantt.vue'
+import SpreadJs from 'views/plugin/SpreadJs.vue'
+import SpreadJsBind from 'views/plugin/SpreadJsBind.vue'
+import SpreadJsBindTest from 'views/plugin/SpreadJsBindTest.vue'
+import SpreadJsList from 'views/plugin/SpreadJsList.vue'
 
 
 //路由懒加载,
@@ -155,8 +160,8 @@ const routes = [
         }
       },
       {
-        path:'axios',
-        component:PageAxios
+        path: 'axios',
+        component: PageAxios
       }
     ]
   },
@@ -180,6 +185,27 @@ const routes = [
         name: 'BetterScroll',
         component: BetterScrollPage
       },
+      {
+        path: 'Gantt',
+        component: Gantt
+      },
+      {
+        path:'SpreadJs',
+        component:SpreadJs
+      },
+      {
+        path:'SpreadJsBind',
+        component:SpreadJsBind
+      },
+      {
+        path:'SpreadJsBindTest',
+        component:SpreadJsBindTest
+      },
+      {
+        path:'SpreadJsList',
+        component:SpreadJsList
+      }
+      
     ]
   },
   {
@@ -187,8 +213,8 @@ const routes = [
     component: Mobile,
     children: [
       {
-        path:'',
-        redirect:'home'
+        path: '',
+        redirect: 'home'
       },
       {
         path: 'home',

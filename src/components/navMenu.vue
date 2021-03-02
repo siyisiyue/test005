@@ -35,7 +35,9 @@
         <el-menu-item index="/Vue/VModel">v-model操作</el-menu-item>
         <el-menu-item index="/Vue/Prop">父子组件传值</el-menu-item>
         <el-menu-item index="/Vue/Slot">Slot 插槽</el-menu-item>
-        <el-menu-item index="/Vue/Router/10001" :route="url">Vue Router</el-menu-item>
+        <el-menu-item index="/Vue/Router/10001" :route="url"
+          >Vue Router</el-menu-item
+        >
         <el-menu-item index="/Vue/axios">Axios</el-menu-item>
       </el-submenu>
       <!-- <el-submenu index="4">
@@ -52,12 +54,19 @@
         </template>
         <el-menu-item index="/JS/ES6">ES6 语法</el-menu-item>
       </el-submenu>
-        <el-submenu index="/plugins">
+      <el-submenu index="/plugins">
         <template slot="title">
           <i class="el-icon-s-tools"></i>
           <span>插件</span>
         </template>
         <el-menu-item index="/plugins/BetterScroll">Better-Scroll</el-menu-item>
+        <el-menu-item index="/plugins/Gantt">Gantt</el-menu-item>
+        <el-menu-item index="/plugins/SpreadJs">SpreadJs</el-menu-item>
+        <el-menu-item index="/plugins/SpreadJsBind">SpreadJs绑定</el-menu-item>
+        <el-menu-item index="/plugins/SpreadJsBindTest"
+          >SpreadJs绑定测试</el-menu-item
+        >
+        <el-menu-item index="/plugins/SpreadJsList">SpreadJs列表</el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
@@ -67,7 +76,10 @@
 export default {
   data() {
     return {
-      url:{path:'/Vue/Router/10001',query:{name:'zhangsan',age:18,length:20}}
+      url: {
+        path: '/Vue/Router/10001',
+        query: { name: 'zhangsan', age: 18, length: 20 },
+      },
     }
   },
   methods: {
