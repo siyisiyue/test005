@@ -7,7 +7,7 @@
           <li :key="index" v-for="(obj,index) in data.filter(x=>x.tableName==item)" @click="btnHandler(obj.id,item)">
               {{obj.name}}
           </li>
-          <li @click="btnHandler(0,item)">新建一个表</li>
+          <li @click="btnHandler(0,item)">新增</li>
       </ul>
     </div>
   </div>
