@@ -1,6 +1,17 @@
 <template>
   <div class="divSpread">
     <div class="divTool">
+
+       <el-select v-model="tableName" placeholder="请选择表" @change="changeHandler">
+        <el-option
+          v-for="item in tableNames"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+
       <el-select v-model="currentSelect" placeholder="请选择">
         <el-option
           v-for="item in options"
@@ -20,7 +31,6 @@
         </el-option>
       </el-select>
       <el-button type="primary" @click="BindFiled">设置</el-button>
-      <el-button type="primary" @click="getTableLength">click me</el-button>
     </div>
 
     <div style="text-align: left">
@@ -77,24 +87,26 @@ export default {
       options: null,
       currentSelect: '',
       typeSelect: 'normal',
-      tableName: 'C-2-74钻(挖)孔灌注桩、地下连续墙钢筋安装检验记录表',
+      tableName: '',
       tableData: null,
       typeOption: [
         { label: '普通', value: 'normal' },
         { label: '区域', value: 'area' },
       ],
+      tableNames:[]
     }
   },
-  created() {},
+  created() {
+
+  },
   mounted() {
-    this.getTableKeys()
-    this.GetAllPostion()
+    this.getAllTableName()
   },
   methods: {
     workbookInitialized(spread) {
       this.spread = spread
       spread.refresh()
-      this.spreadInit()
+      // this.spreadInit()
     },
     spreadInit() {
       let filePath = '/temp/' + this.tableName + '.xlsx'
@@ -146,7 +158,11 @@ export default {
         },
       })
         .then((res) => {
-          this.options = res.data
+          if (res.data.code != 0) {
+            this.$message.error(res.data.msg)
+          } else {
+            this.options = res.data.data
+          }
         })
         .catch((error) => {})
     },
@@ -192,6 +208,7 @@ export default {
       })
         .then((res) => {
           this.tableData = res.data
+          this.SetBindVal()
         })
         .catch((error) => {})
     },
@@ -216,8 +233,8 @@ export default {
       })
     },
     loaded() {
-      this.BindData()
-      this.SetBindVal()
+      this.getTableKeys()
+      this.GetAllPostion()
     },
     getTableLength() {
       this.axios({
@@ -232,6 +249,25 @@ export default {
         })
         .catch((error) => {})
     },
+    getAllTableName() {
+       this.axios({
+        method: 'get',
+        url: '/api/Table/GetAllTableName'
+      })
+        .then((res) => {
+          if (res.data.code != 0) {
+            this.$message.error(res.data.msg)
+          } else {
+            this.tableNames = res.data.data.map(x=>{
+              return {value:x, label:x}
+            })
+          }
+        })
+        .catch((error) => {})
+    },
+    changeHandler(v) {
+      this.spreadInit()
+    }
   },
 }
 </script>
@@ -258,4 +294,5 @@ export default {
   height: 300px;
   background: pink;
 }
+.el-select{margin: 0 4px;}
 </style>
